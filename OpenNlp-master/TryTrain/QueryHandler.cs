@@ -28,27 +28,33 @@ namespace TryTrain
             }
         }
 
-        private async Task<string[]> sendOff()
+        private async Task<Tuple<string,string>[]> sendOff()
         {
-            List<Task<string>> issuedQueries = new List<Task<string>>();
+            List<Task<Tuple<string,string>>> issuedQueries = new List<Task<Tuple<string,string>>>();
             foreach (Query q in queries)
             {
-                issuedQueries.Add(Task<string>.Factory.StartNew(() => { return DataAccess.query(q); }));
+                issuedQueries.Add
+                (
+                        Task<Tuple<string,string>>.Factory.StartNew
+                        (
+                            ()=>{ return new Tuple<string,string>(q.attributeMap["fileName"].Item1, DataAccess.query(q)); }
+                        )
+                 );
                // Task.
             }
             return await Task.WhenAll(issuedQueries);
         }
 
-        public List<string> handleQuery(string[] sentences)
+        public List<Tuple<string,string>> handleQuery(string[] sentences)
         {
             genQueries(sentences);
-            List<string> retList = new List<string>();
-            string[] response = sendOff().Result;
-            foreach (string r in response)
+            List<Tuple<string,string>> retList = new List<Tuple<string,string>>();
+            Tuple<string,string>[] response = sendOff().Result;
+            foreach (Tuple<string,string> r in response)
             {
                // string temp = r;
                 //new HTMLMessager().removeFromLine(ref temp);//re encapsulate in return val
-                retList.Add(stringOp(r));
+                retList.Add(new Tuple<string, string>(r.Item1, stringOp(r.Item2)));
             }
             return retList;
         }

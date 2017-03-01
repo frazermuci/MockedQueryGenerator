@@ -87,9 +87,11 @@ namespace TryTrain
                 var emesd = new EnglishMaximumEntropySentenceDetector(modelPath + "\\EnglishSD.nbin");
                 var sentences = emesd.SentenceDetect(paragraph);
                 var qHandler = new QueryHandler(kwf, func);
-                foreach (string response in qHandler.handleQuery(sentences))
+                foreach (Tuple<string, string> response in qHandler.handleQuery(sentences))
                 {
-                    Console.WriteLine(response);
+					Console.WriteLine("Hits for query: "+"\"" +response.Item1+"\"");
+                    Console.WriteLine(response.Item2);
+                    Console.WriteLine();
                 }   
             }
         }
