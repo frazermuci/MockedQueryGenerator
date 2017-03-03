@@ -12,10 +12,12 @@ namespace Parser
 {
     class ParsedCHM
     {
-        private List<Element> buff;
-        public List<List<Element>> blocks { get; } //breadth first from root
-        public List<string> hrefs { get; }
-        public string title { get; }
+        public List<List<Element>> blocks {get;}//= new List<List<Element>>(); //breadth first from root
+        private List<Element> buff; //= new List<Element>();
+        public List<string> hrefs {get;} //= new List<string>();
+        private string filePath;
+        private string title;
+
         //HtmlNode hNode
         //checks if hNode represents a StepsBlock
         //return: bool
@@ -159,11 +161,12 @@ namespace Parser
             }
         }
 
-        public ParsedCHM(HtmlDocument hDoc)
+        public ParsedCHM(string file)
         {
-            blocks  = new List<List<Element>>();
-            buff = new List<Element>();
-            hrefs = new List<string>();
+			buff = new List<Element>();
+			hrefs = new List<string>(); 
+            HtmlDocument hDoc = new HtmlDocument();
+            hDoc.Load(file);
             HtmlNode titleNode = getFirstNameOccurance(hDoc.DocumentNode.Descendants(), "title");
             this.title = titleNode.InnerText;
             HtmlNode body = getFirstNameOccurance(hDoc.DocumentNode.Descendants(), "body");
@@ -208,11 +211,6 @@ namespace Parser
             {
                 Console.WriteLine(href);
             }
-        }
-
-        public void sendOff()
-        {
-            ;//TODO
         }
     }
 }

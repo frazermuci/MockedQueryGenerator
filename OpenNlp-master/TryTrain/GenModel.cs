@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TryTrain
 {
-    class GenModel
+    public class GenModel
     {
         public GenModel(string htmlFile)
         {

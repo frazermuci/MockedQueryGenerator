@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TryTrain
 {
-    interface KeyWordFinder
+    public interface KeyWordFinder
     {
         Tuple<string, bool> boilDown(string sentecnce);
     }

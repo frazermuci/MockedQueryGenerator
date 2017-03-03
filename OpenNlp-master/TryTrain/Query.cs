@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace TryTrain
 {
     
-    struct Query
+    public struct Query
     {
         public Dictionary<string, Tuple<string, bool>> attributeMap { get; set; }
         public Tuple<int, bool> quantityOfResponses { get; set; }

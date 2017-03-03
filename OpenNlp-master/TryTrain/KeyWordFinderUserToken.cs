@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TryTrain
 {
-    class KeyWordFinderUserToken : KeyWordFinder
+    public class KeyWordFinderUserToken : KeyWordFinder
     {
         private bool refUserFile(string str)
         {

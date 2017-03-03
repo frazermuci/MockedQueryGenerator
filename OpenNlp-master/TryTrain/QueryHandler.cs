@@ -11,11 +11,17 @@ namespace TryTrain
         Func<string, string> stringOp;
         List<Query> queries;
         KeyWordFinder kwf;
+		DataAccess dA;
 
-        public QueryHandler(KeyWordFinder kwf, Func<string, string> stringOp) //later associate results with
+        public QueryHandler(
+							DataAccess dA,
+							KeyWordFinder kwf, 
+							Func<string, string> stringOp
+							) //later associate results with
         {                                                                               //query
-            this.stringOp = stringOp;
+            this.dA = dA;
             this.kwf = kwf;
+			this.stringOp = stringOp;
             this.queries = new List<Query>();
         }
 
@@ -37,7 +43,7 @@ namespace TryTrain
                 (
                         Task<Tuple<string,string>>.Factory.StartNew
                         (
-                            ()=>{ return new Tuple<string,string>(q.attributeMap["fileName"].Item1, DataAccess.query(q)); }
+                            ()=>{ return new Tuple<string,string>(q.attributeMap["fileName"].Item1, dA.query(q)); }
                         )
                  );
                // Task.

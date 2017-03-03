@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TryTrain
 {
-    class QueryGenerator
+    public class QueryGenerator
     {
         private KeyWordFinder kwf;
 
