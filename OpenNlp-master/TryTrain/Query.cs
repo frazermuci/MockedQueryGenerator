@@ -9,15 +9,15 @@ namespace TryTrain
     
     public struct Query
     {
-        public Dictionary<string, Tuple<string, bool>> attributeMap { get; set; }
+        public List<Attribute> attributeList { get; set; }
         public Tuple<int, bool> quantityOfResponses { get; set; }
         public string resourceExpected { get; set; }
 
-        public Query(Dictionary<string, Tuple<string, bool>> attributeMap, 
+        public Query(List<Attribute> attributeList, 
                      Tuple<int,bool> quantityOfResponses, 
                      string resourceExpected)
         {
-            this.attributeMap = attributeMap;
+            this.attributeList = attributeList;
             this.quantityOfResponses = quantityOfResponses;
             this.resourceExpected = resourceExpected;
         }

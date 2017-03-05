@@ -19,7 +19,7 @@ namespace TryTrain
         {
             //logic to handle query
             //return query.attributeMap["fileName"].Item1;
-			foreach(Tuple<string, bool> attribute in query.attributeMap)
+			foreach(Attribute attribute in query.attributeList)
 			{
 				//keywords
 				//db.getFileElements(attribute.Item1, keywords);

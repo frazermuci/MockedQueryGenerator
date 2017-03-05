@@ -39,13 +39,16 @@ namespace TryTrain
             List<Task<Tuple<string,string>>> issuedQueries = new List<Task<Tuple<string,string>>>();
             foreach (Query q in queries)
             {
-                issuedQueries.Add
-                (
-                        Task<Tuple<string,string>>.Factory.StartNew
-                        (
-                            ()=>{ return new Tuple<string,string>(q.attributeMap["fileName"].Item1, dA.query(q)); }
-                        )
-                 );
+				foreach(Attribute a in q.attributeList)
+				{
+					issuedQueries.Add
+					(
+							Task<Tuple<string,string>>.Factory.StartNew
+							(
+								()=>{ return new Tuple<string,string>(a.value, dA.query(q)); }
+							)
+					);
+				}
                // Task.
             }
             return await Task.WhenAll(issuedQueries);

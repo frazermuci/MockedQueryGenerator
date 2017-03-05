@@ -17,9 +17,9 @@ namespace TryTrain
 
         public Query queryGen(string sentence)
         {
-            Dictionary<string, Tuple<string, bool>> attributeMap = new Dictionary<string, Tuple<string, bool>>();
-            attributeMap.Add("fileName", kwf.boilDown(sentence));
-            return new TryTrain.Query(attributeMap, new Tuple<int, bool>(0, false), "text");
+            List<Attribute> attributeList = new List<Attribute>();
+            attributeMap.Add(new Attribute("fileName", kwf.boilDown(sentence),false));
+            return new Query(attributeList, new Tuple<int, bool>(0, false), "text");
         }
     }
 }
