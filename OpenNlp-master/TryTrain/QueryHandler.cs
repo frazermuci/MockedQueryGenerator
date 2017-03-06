@@ -39,7 +39,7 @@ namespace TryTrain
             List<Task<Tuple<string,string>>> issuedQueries = new List<Task<Tuple<string,string>>>();
             foreach (Query q in queries)
             {
-				foreach(Attribute a in q.attributeList)
+				foreach(Attrib a in q.attributeList)
 				{
 					issuedQueries.Add
 					(

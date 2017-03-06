@@ -79,14 +79,15 @@ namespace TryTrain
                 new HTMLMessager().removeFromLine(ref temp);
                 return temp;
             });
-            KeyWordFinderUserToken kwf = new KeyWordFinderUserToken();
+            KeyWordFinder kwf = new KeyWordFinderUserBot();
+			DataAccess dA = new DataAccessDB();
             while (true)
             {
                 var paragraph = Console.ReadLine();
                 var modelPath = "..\\..\\..\\Resources\\Models";
                 var emesd = new EnglishMaximumEntropySentenceDetector(modelPath + "\\EnglishSD.nbin");
                 var sentences = emesd.SentenceDetect(paragraph);
-                var qHandler = new QueryHandler(kwf, func);
+                var qHandler = new QueryHandler(dA,kwf, func);
                 foreach (Tuple<string, string> response in qHandler.handleQuery(sentences))
                 {
 					Console.WriteLine("Hits for query: "+"\"" +response.Item1+"\"");

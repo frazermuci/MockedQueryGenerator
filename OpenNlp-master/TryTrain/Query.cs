@@ -9,11 +9,11 @@ namespace TryTrain
     
     public struct Query
     {
-        public List<Attribute> attributeList { get; set; }
+        public List<Attrib> attributeList { get; set; }
         public Tuple<int, bool> quantityOfResponses { get; set; }
         public string resourceExpected { get; set; }
 
-        public Query(List<Attribute> attributeList, 
+        public Query(List<Attrib> attributeList, 
                      Tuple<int,bool> quantityOfResponses, 
                      string resourceExpected)
         {

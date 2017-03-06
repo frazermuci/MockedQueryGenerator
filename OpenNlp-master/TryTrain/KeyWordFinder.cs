@@ -8,6 +8,7 @@ namespace TryTrain
 {
     public interface KeyWordFinder
     {
-        Tuple<string, bool> boilDown(string sentecnce);
+        //Tuple<string, bool> boilDown(string sentecnce);
+        string boilDown(string sentecnce);
     }
 }
